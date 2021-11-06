@@ -1,0 +1,39 @@
+#cv-accounts-table tbody td:nth-child(1),
+#cv-accounts-table thead th:nth-child(1) {
+    width: 120px!important;
+}
+
+#cv-categories-table tbody td:nth-child(1),
+#cv-categories-table thead th:nth-child(1) {
+    width: 120px!important;
+}
+
+#cv-storage-table tbody td:nth-child(1),
+#cv-storage-table thead th:nth-child(1) {
+    width: 120px!important;
+}
+
+#cv-storage-table thead th:nth-child(4) {
+    width: 90px!important;
+}
+
+#cv-outputs-table tbody td:nth-child(1),
+#cv-outputs-table thead th:nth-child(1) {
+    width: 120px!important;
+}
+
+table tbody td {
+    min-width: 110px!important;
+}
+
+table tbody td:last-child {
+    min-width: 0px!important;
+}
+
+#cv-allocations-table tbody tr:hover {
+    background-color: rgb(0, 0, 0, .2)
+}
+
+.c-dark-theme #cv-allocations-table tbody tr:hover {
+    background-color: rgb(255, 255, 255, .15)
+}

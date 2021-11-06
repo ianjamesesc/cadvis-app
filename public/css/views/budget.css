@@ -1,0 +1,119 @@
+.dataTables_wrapper .row:nth-child(1) .col-sm-12:nth-child(1) {
+    display: none!important;
+}
+
+.dataTables_wrapper .row:nth-child(1) .col-sm-12:nth-child(2) {
+    margin: 0!important;
+}
+
+.dataTables_wrapper .row:nth-child(1) .col-sm-12:nth-child(2) input {
+    margin: 0!important;
+    margin-bottom: 5px!important;
+}
+
+.dataTables_wrapper .row:nth-child(1) .col-sm-12:nth-child(2) {
+    padding: 0!important;
+}
+
+.dataTables_filter input {
+    width: 100%!important;
+}
+
+.datatable tbody tr[role="row"] {
+    text-align: center!important;
+    min-height: 40px!important;
+    cursor: pointer!important;
+}
+
+.datatable tbody tr[role="row"]:hover {
+    background-color: rgb(255, 255, 255, .15);
+    transition: .3s ease!important;
+}
+
+.datatable tbody td:nth-child(5),
+.datatable tbody td:nth-child(6),
+.datatable tbody td:nth-child(7),
+.datatable tbody td:nth-child(8),
+.datatable tbody td:nth-child(9) {
+    text-align: right!important;
+}
+
+.datatable thead th:nth-child(5),
+.datatable thead th:nth-child(6),
+.datatable thead th:nth-child(7),
+.datatable tbody th:nth-child(9),
+.datatable thead th:nth-child(8),
+.datatable tbody td:nth-child(5),
+.datatable tbody td:nth-child(6),
+.datatable tbody td:nth-child(7),
+.datatable tbody td:nth-child(8),
+.datatable tbody td:nth-child(9) {
+    max-width: 80px!important;
+}
+
+.datatable tbody td:nth-child(2) {
+    text-align: left!important;
+}
+
+.datatable thead th:nth-child(1),
+.datatable tbody td:nth-child(1) {
+    max-width: 70px!important;
+}
+
+.datatable thead th:nth-child(3),
+.datatable tbody td:nth-child(3) {
+    width: 0px!important;
+}
+
+.datatable thead th:nth-child(4),
+.datatable tbody td:nth-child(4) {
+    width: 100px!important;
+}
+
+#cv-expenses-table tbody td:nth-child(6) {
+    text-align: left!important;
+}
+
+#cv-expenses-table tbody td:nth-child(7) {
+    text-align: right!important;
+}
+
+#cv-expenses-table tbody td:nth-child(7) {
+    padding: 0px!important;
+}
+
+#cv-expenses-table tbody td:nth-child(1),
+#cv-expenses-table tbody td:nth-child(2),
+#cv-expenses-table tbody td:nth-child(3),
+#cv-expenses-table tbody td:nth-child(4) {
+    text-align: center!important;
+}
+
+#cv-expenses-table tbody td:nth-child(6) {
+    text-align: right!important;
+}
+
+#cv-expenses-table thead th:nth-child(1),
+#cv-expenses-table thead th:nth-child(2),
+#cv-expenses-table thead th:nth-child(3),
+#cv-expenses-table thead th:nth-child(4),
+#cv-expenses-table tbody td:nth-child(1),
+#cv-expenses-table tbody td:nth-child(2),
+#cv-expenses-table tbody td:nth-child(3),
+#cv-expenses-table tbody td:nth-child(4) {
+    width: 150px!important;
+}
+
+#cv-expenses-table thead th:nth-child(6),
+#cv-expenses-table tbody td:nth-child(6) {
+    width: 150px!important;
+}
+
+#cv-expenses-table tbody tr {
+    cursor: pointer;
+}
+
+#cv-expenses-table tbody tr:hover {
+    background-color: rgb(255, 255, 255, .15);
+    transition: .3s ease;
+}

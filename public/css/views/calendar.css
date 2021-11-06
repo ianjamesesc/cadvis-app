@@ -1,0 +1,13 @@
+.fc-day-today {
+    background-color: rgb(0, 0, 0, 0.15)!important;
+}
+
+.c-dark-theme .fc-day-today {
+    background-color: rgb(255, 255, 255, 0.15)!important;
+}
+
+.fc-daygrid-day-number {
+    font-weight: bold!important;
+    transform: scale(1.1)!important;
+    padding-right: 10px!important;
+}

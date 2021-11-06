@@ -1,0 +1,271 @@
+.project_today>div {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project_today>div {
+    transition: .3s ease;
+}
+
+.project_today>div:hover {
+    background-color: rgb(0, 0, 0, .05);
+    transition: .3s ease;
+}
+
+.c-dark-theme .project_today>div:hover {
+    background-color: #2f303a;
+    transition: .3s ease;
+}
+
+.status {
+    color: white!important;
+}
+
+.badge .bg-secondary {
+    color: #3c4b64!important;
+}
+
+.toast>* {
+    color: white!important;
+}
+
+.reset-date-btn:hover {
+    transition: .2s ease;
+    color: rgb(255, 255, 255, .5)
+}
+
+.reset-date-btn:active {
+    transition: .05s ease;
+    color: rgb(61, 156, 235)
+}
+
+.c-dark-theme .table-header-color {
+    background-color: #4c4f54!important;
+    color: white!important;
+}
+
+.table-header-color {
+    background-color: #636f83!important;
+    color: white!important;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.fc-event-main {
+    cursor: pointer;
+}
+
+.form-control-transparent {
+    width: 100%!important;
+    height: 100%!important;
+    border: none!important;
+    background-color: transparent!important;
+    text-align: center!important;
+    outline: none!important;
+}
+
+.c-dark-theme .form-control-transparent {
+    color: white!important;
+}
+
+*:disabled {
+    cursor: default!important;
+}
+
+button {
+    cursor: pointer!important;
+}
+
+button:focus {
+    outline: none!important;
+}
+
+table tbody button:focus,
+table tbody input:focus,
+table tbody select:focus,
+table tbody textarea:focus {
+    outline: none!important;
+}
+
+.error-conn {
+    background-color: rgba(0, 0, 0, 0.5)!important;
+    z-index: 999!important;
+    position: absolute!important;
+    left: 0!important;
+    top: 0!important;
+    width: 100%!important;
+    height: 100%!important;
+    display: none!important;
+}
+
+.bg-postponed {
+    background-color: teal;
+}
+
+.border-postponed {
+    border: 1px solid teal!important;
+}
+
+.text-postponed {
+    color: teal!important;
+}
+
+.bg-ready {
+    background-color: #7d9258!important;
+}
+
+.border-ready {
+    border: 1px solid #7d9258!important;
+}
+
+.text-ready {
+    color: #7d9258!important;
+}
+
+.bg-current {
+    background-color: coral!important;
+}
+
+.border-current {
+    border: 1px solid coral!important;
+}
+
+.text-current {
+    color: coral!important;
+}
+
+.form-check label {
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                              supported by Chrome, Edge, Opera and Firefox */
+}
+
+.modal {
+    overflow: auto !important;
+}
+
+.ql-editor {
+    background-color: #474850!important;
+}
+
+#editor {
+    border-radius: 4px!important;
+}
+
+.currency_sign {
+    position: absolute!important;
+    top: 5px!important;
+    left: 10px!important;
+}
+
+.no-b-radius {
+    border-radius: 0px!important;
+}
+
+.card-debit table tbody tr td:nth-child(1),
+.card-credit table tbody tr td:nth-child(1) {
+    max-width: 140px!important;
+    min-width: 140px!important;
+}
+
+.card-debit table tbody tr td:nth-child(2),
+.card-credit table tbody tr td:nth-child(2) {
+    width: 250px!important;
+    min-width: 250px!important;
+}
+
+.card-debit table tbody tr td:nth-child(3),
+.card-credit table tbody tr td:nth-child(3) {
+    min-width: 100px!important;
+}
+
+#system-time .time .time-separator {
+    transition: .0s ease;
+}
+
+.system-time-ticker {
+    opacity: .3;
+}
+
+.cv-avatar-lg {
+    width: 256px;
+    border-radius: 50%;
+}
+
+.cursor-select {
+    cursor: pointer!important;
+}
+
+.hoverable {
+    transition: .15s ease;
+}
+
+.hoverable:hover {
+    background-color: rgba(255, 255, 255, 0.1)!important;
+}
+
+.canvas {
+    transition: .5s ease!important;
+}
+
+#tasklist tbody {
+    text-align: center;
+    cursor: pointer;
+}
+
+#tasklist tbody tr {
+    transition: .2s ease;
+    cursor: pointer!important;
+}
+
+#tasklist tbody tr:hover {
+    background-color: rgb(255, 255, 255, .15);
+    transition: .2s ease;
+}
+
+#tasklist th,
+#tasklist td {
+    white-space: nowrap;
+}
+
+#tasklist div.dataTables_wrapper {
+    margin: 0 auto;
+}
+
+#tasklist tbody td:nth-child(2),
+#tasklist tbody td:nth-child(4) {
+    text-align: left!important;
+}
+
+#paid-marker {
+    width: 5px!important;
+    height: 5px!important;
+    border-radius: 50%!important;
+}
+
+@media only screen and (max-width: 1199px) {
+    #modal_projview .modal-dialog {
+        max-width: 90%!important;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #modal_projview .modal-dialog {
+        max-width: 1200px!important;
+    }
+}
