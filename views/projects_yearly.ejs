@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--
+* CoreUI Pro based Bootstrap Admin Template
+* @version v3.2.0
+* @link https://coreui.io/pro/
+* Copyright (c) 2020 creativeLabs Łukasz Holeczek
+* License (https://coreui.io/pro/license)
+-->
+<html lang="en">
+
+<head>
+    <%- include ('resources/head') %>
+        <title>Yearly Projects | Cadence Visual</title>
+        <link type="text/css" href="/css/views/projects.css" rel="stylesheet">
+</head>
+
+<body class="c-app c-no-layout-transition <%- (user.dark_theme) ? 'c-dark-theme': '' %>">
+    <%- include ('layouts/sidebar') %>
+
+        <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
+            <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">
+                <svg class="c-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-x"></use>
+                </svg>
+            </button>
+            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
+                        <svg class="c-icon">
+                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list"></use>
+                        </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                        <svg class="c-icon">
+                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speech"></use>
+                        </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                        <svg class="c-icon">
+                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                        </svg></a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="c-wrapper">
+            <%- include ('layouts/navbar') %>
+                <div class="c-body">
+                    <main class="c-main">
+                        <div class="container-fluid">
+                            <div class="fade-in">
+                                <div class="row">
+
+                                    <div class="col-lg-2 col-md-3 col-6 d-inline">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body p-0 d-flex align-items-center" id="projs-widget-total">
+                                                <div class="bg-gradient-secondary px-0 py-3 mfe-3 text-center projects-widget">
+                                                    <h3 class="m-0 value text-dark">0</h3>
+                                                </div>
+                                                <div>
+                                                    <div class="text-value text-white">
+
+                                                    </div>
+                                                    <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                        Booked Projects</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-6 d-inline">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body p-0 d-flex align-items-center" id="projs-widget-active">
+                                                <div class="bg-gradient-info px-0 py-3 mfe-3 text-center projects-widget">
+                                                    <h3 class="m-0 value">0</h3>
+                                                </div>
+                                                <div>
+                                                    <div class="text-value text-white">
+
+                                                    </div>
+                                                    <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                        Active Projects</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-6 d-sm-inline">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body p-0 d-flex align-items-center" id="projs-widget-upcoming">
+                                                <div class="bg-gradient-primary px-0 py-3 mfe-3 text-center projects-widget">
+                                                    <h3 class="m-0 value">0</h3>
+                                                </div>
+                                                <div>
+                                                    <div class="text-value text-white">
+
+                                                    </div>
+                                                    <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                        Upcoming Projects</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-3 col-6 d-sm-inline">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body p-0 d-flex align-items-center" id="projs-widget-pending">
+                                                <div class="bg-gradient-warning px-0 py-3 mfe-3 text-center projects-widget">
+                                                    <h3 class="m-0 value">0</h3>
+                                                </div>
+                                                <div>
+                                                    <div class="text-value text-white">
+
+                                                    </div>
+                                                    <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                        Pending Projects</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-sm-12 d-sm-inline d-none">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body p-0 d-flex align-items-center" id="projs-widget-cancelled">
+                                                <div class="bg-gradient-danger px-0 py-3 mfe-3 text-center projects-widget">
+                                                    <h3 class="m-0 value">0</h3>
+                                                </div>
+                                                <div>
+                                                    <div class="text-value text-white">
+
+                                                    </div>
+                                                    <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                        Cancelled Projects</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-2 col-sm-12 d-sm-inline d-none">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body p-0 d-flex align-items-center" id="projs-widget-submitted">
+                                                <div class="bg-gradient-success px-0 py-3 mfe-3 text-center projects-widget">
+                                                    <h3 class="m-0 value">0</h3>
+                                                </div>
+                                                <div>
+                                                    <div class="text-value text-white">
+
+                                                    </div>
+                                                    <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                        Projects Done</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="dropdown-divider mt-1 mb-4"></div>
+                                <div class="row shoot-today-row">
+
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+
+                                        <div class="row">
+                                            <div class="d-inline col-md-8 col-10" style="font-size: 1.09375rem; font-weight: 500;">
+                                                Cadence Visual Projects (<span id="projs-total">0</span>)
+                                            </div>
+
+                                            <div class="d-inline text-right col-md-4 col-2 w-100">
+                                                <button class="btn btn-sm btn-primary" onclick="toggleProjectModal(0)">
+                                                    <svg class="c-icon d-inline">
+                                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                                        </use>
+                                                    </svg>
+                                                    <span class="d-none d-lg-inline p-0"
+                                                        style="margin-bottom: -15px">Add New Project</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body table-responsive">
+                                        <table class="table table-striped table-bordered datatable projects-datatable" id="projects_table_yearly">
+                                            <thead class="table-header-color">
+                                                <th style="text-align: center; cursor: pointer;">No.</th>
+                                                <th style="text-align: center; cursor: pointer;">Name</th>
+                                                <th style="text-align: center; cursor: pointer;">Type</th>
+                                                <th style="text-align: center; cursor: pointer;">Pre-Event</th>
+                                                <th style="text-align: center; cursor: pointer;">Event</th>
+                                                <th style="text-align: center; cursor: pointer;">Status</th>
+                                                <th style="text-align: center; cursor: pointer;">Outputs</th>
+                                                <th style="text-align: center; cursor: pointer;">Drive</th>
+                                                <th style="text-align: center; cursor: pointer;">Package</th>
+                                                <th style="text-align: center; cursor: pointer;">Head</th>
+                                                <th style="text-align: center; cursor: pointer;">Cinematographers</th>
+                                                <th style="text-align: center; cursor: pointer;">Suppliers</th>
+                                                <th style="text-align: center; cursor: pointer;">Booking</th>
+                                                <th style="text-align: center; cursor: pointer;">Location</th>
+                                                <th style="text-align: center; cursor: pointer;">Notes</th>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+        </div>
+        <div id="overlay"></div>
+        <%- include ('resources/scripts') %>
+            <script type="text/javascript" src="js/views/projects.js"></script>
+            <%- include ('modals/projdetails') %>
+                <%- include ('modals/confirm') %>
+                    <%- include ('modals/shoot-today') %>
+</body>
+
+
+</html>

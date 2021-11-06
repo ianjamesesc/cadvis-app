@@ -1,0 +1,148 @@
+<!-- Modal -->
+<div class="modal fade cd-example-modal-xl" id="modal_projbudget" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content w-100">
+            <div class="modal-header p-2 px-4">
+                <input type="text" hidden id="project_real_id">
+                <h5 class="modal-title py-2" id="proj-view-title">Project&nbsp;<span class="project_id"></span></h5>
+                <div class="text-right py-1 view-only">
+                    <p class="text-muted m-0 d-block" id="proj-date-created"></p>
+                    <small class="text-muted d-block" style="margin-top: -3px;">Date Added</small>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row px-3">
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Title: </span>&nbsp;<span class="font-weight-bold" id="proj-title"></span></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Event Date: </span>&nbsp;<span class="font-weight-bold" id="proj-event-date"></span></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Type: </span>&nbsp;<span class="font-weight-bold proj-type"></span></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Headed by: </span>&nbsp;<span class="font-weight-bold" id="proj-head"></span></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Availed Inclusions: </span>&nbsp;<span class="font-weight-bold" id="proj-inclusions"></span></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Status:</span>&nbsp;
+                        <span class="font-weight-bold" id="proj-status"></span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Initial Payment: </span>&nbsp;<span class="font-weight-bold" id="proj-initial"></span></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Package Amount: </span>&nbsp;<span class="font-weight-bold" id="proj-package"></span></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Pre-<span class="proj-type"></span> <span class="date-or-dates"></span>: </span>&nbsp;<span class="font-weight-bold" id="proj-pre-event-date"></span></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12"><span class="text-muted">Location: </span>&nbsp;<span class="font-weight-bold" id="proj-location"></span></div>
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <div class="card-group mb-2 mt-3 px-2" id="card_group">
+
+                    <div class="card bg-transparent" id="card-group-expenses">
+                        <div class="card-body">
+                            <div class="text-value-lg">₱ <span class="amount">0</span></div><small class="text-muted text-uppercase font-weight-bold">Expenses</small>
+                            <div class="progress progress-xs mt-3 mb-0">
+                                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-transparent" id="card-group-revenue">
+                        <div class="card-body">
+                            <div class="text-value-lg">₱ <span class="amount">0</span></div><small class="text-muted text-uppercase font-weight-bold">Revenue</small>
+                            <div class="progress progress-xs mt-3 mb-0">
+                                <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row px-3">
+                    <div class="col-lg-6 col-md-12 col-sm-12 p-0 p-2">
+                        <div class="card card-debit bg-transparent h-100">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="d-inline col-10">
+                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">Debit</h6>
+                                    </div>
+
+                                    <div class="d-inline text-right col-2 w-100">
+                                        <button class="btn btn-sm btn-primary" onclick="addBudgetRow(this)">
+                                    <svg class="c-icon d-inline">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                        </use>
+                                    </svg>
+                                </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <table class="table table-sm table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center; cursor: pointer;" class="bg-secondary">Date</th>
+                                            <th style="text-align: center; cursor: pointer;" class="bg-secondary">Description</th>
+                                            <th style="text-align: center; cursor: pointer;" class="bg-secondary" colspan="2">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-sm-12 p-0 p-2">
+                        <div class="card card-credit bg-transparent h-100">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="d-inline col-10">
+                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">Credit</h6>
+                                    </div>
+
+                                    <div class="d-inline text-right col-2 w-100">
+                                        <button class="btn btn-sm btn-primary" onclick="addBudgetRow(this)">
+                                    <svg class="c-icon d-inline">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                        </use>
+                                    </svg>
+                                </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <table class="table table-sm table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center; cursor: pointer;" class="bg-secondary">Date</th>
+                                            <th style="text-align: center; cursor: pointer;" class="bg-secondary">Description</th>
+                                            <th style="text-align: center; cursor: pointer;" class="bg-secondary" colspan="2">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="d-inline" style="text-align: right; position: relative; width: 100%;">
+                    <button type="button" class="btn btn-secondary proj_cancel_btn" style="margin-left: 2px; margin-right: 2px;" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary proj_submit_btn" onclick="saveChanges()" disabled style="margin-left: 2px; margin-right: 2px;">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .currency_sign {
+        position: absolute;
+        top: 54%;
+        left: 8%;
+    }
+    
+    .no-b-radius {
+        border-radius: 0px !important;
+    }
+</style>

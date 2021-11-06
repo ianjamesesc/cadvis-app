@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+* CoreUI Pro based Bootstrap Admin Template
+* @version v3.2.0
+* @link https://coreui.io/pro/
+* Copyright (c) 2020 creativeLabs Łukasz Holeczek
+* License (https://coreui.io/pro/license)
+-->
+<html lang="en">
+
+<head>
+    <%- include ('resources/head') %>
+        <title>Budget | Cadence Visual</title>
+        <link type="text/css" href="css/views/budget.css" rel="stylesheet">
+</head>
+
+<body class="c-app c-no-layout-transition <%- (user.dark_theme) ? 'c-dark-theme': '' %>">
+    <%- include ('layouts/sidebar.ejs') %>
+
+        <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
+            <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">
+        <svg class="c-icon">
+          <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-x"></use>
+        </svg>
+      </button>
+            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list"></use>
+            </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speech"></use>
+            </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+            </svg></a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="c-wrapper">
+            <%- include ('layouts/navbar.ejs') %>
+                <div class="c-body">
+                    <main class="c-main">
+                        <div class="container-fluid">
+                            <div class="fade-in">
+
+                                <div class="row text-center">
+                                    <div class="col-12 pt-5">
+                                        <img class="cv-avatar-lg cv-user-avatar mb-5" src="images/<%- (user.avatar) ? user.id: 'avatar' %>.jpg">
+                                        <h2 class="cv-user-name mb-1"></h2>
+                                        <h5 class="cv-user-position font-italic"></h5>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </main>
+                </div>
+        </div>
+        <%- include ('resources/scripts') %>
+
+</body>
+<script>
+    $(document).ready(function() {
+        $('.cv-user-name').text(`${sessioned_user.name.first} ${sessioned_user.name.last}`)
+        $('.cv-user-position').text(`${sessioned_user.position}`)
+    })
+</script>
+
+</html>

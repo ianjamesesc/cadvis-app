@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+* CoreUI Pro based Bootstrap Admin Template
+* @version v3.2.0
+* @link https://coreui.io/pro/
+* Copyright (c) 2020 creativeLabs Łukasz Holeczek
+* License (https://coreui.io/pro/license)
+-->
+<html lang="en">
+
+<head>
+    <%- include ('resources/head') %>
+        <title>
+            <%- user.name %> | Cadence Visual
+        </title>
+        <link type="text/css" href="css/views/calendar.css" rel="stylesheet">
+</head>
+
+<body class="c-app c-no-layout-transition <%- (user.dark_theme) ? 'c-dark-theme': '' %>">
+
+    <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
+        <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">
+        <svg class="c-icon">
+          <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-x"></use>
+        </svg>
+      </button>
+        <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
+                    <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list"></use>
+            </svg></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                    <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speech"></use>
+            </svg></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                    <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+            </svg></a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="c-wrapper">
+        <%- include ('layouts/navbar-supplier.ejs') %>
+            <div class="c-body">
+                <main class="c-main">
+                    <div class="container-fluid">
+                        <div class="fade-in">
+                            <div class="row">
+
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body p-0 d-flex align-items-center" id="events-widget-total">
+                                            <div class="bg-gradient-primary px-0 py-3 mfe-3 text-center projects-widget" style="width: 12%; min-width: 80px;">
+                                                <h3 class="m-0 value">0</h3>
+                                            </div>
+                                            <div>
+                                                <div class="text-value text-white">
+
+                                                </div>
+                                                <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                    All <span id="year-events"></span> Events with
+                                                    <%- user.name %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body p-0 d-flex align-items-center" id="events-widget-event">
+                                            <div class="px-0 py-3 mfe-3 text-center projects-widget" style="background-color: #009ee5; width: 12%; min-width: 80px;">
+                                                <h3 class="m-0 value">0</h3>
+                                            </div>
+                                            <div>
+                                                <div class="text-value text-white">
+
+                                                </div>
+                                                <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                    <span id="widget-month-events"></span> Events
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body p-0 d-flex align-items-center" id="events-widget-pre-event">
+                                            <div class="px-0 py-3 mfe-3 text-center projects-widget" style="background-color: #2ab67c; width: 12%; min-width: 80px;">
+                                                <h3 class="m-0 value">0</h3>
+                                            </div>
+                                            <div>
+                                                <div class="text-value text-white">
+
+                                                </div>
+                                                <div class="text-muted text-uppercase font-weight-bold small p-0">
+                                                    <span id="widget-month-pre-events"></span> Pre-Event Shoots
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card m-0 h-100">
+                                <div class="card-header">
+                                    <h5>Cadence Visual&nbsp;&nbsp;&times;&nbsp;&nbsp;<span id="supplier-name"><%- user.name %></span></h5>
+                                </div>
+                                <div class="card-body h-100">
+                                    <div id="calendar"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </main>
+            </div>
+    </div>
+    <%- include ('resources/scripts') %>
+        <script>
+            var calendar, events = [],
+                all_events
+
+            var calendarEl = document.getElementById('calendar');
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                displayEventTime: false,
+                eventRender: function(event, element, view) {
+                    var title = element.find(".fc-title").val()
+                    element.find(".fc-title").html("<b>" + title + "</b>")
+                },
+                schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+                eventClick: function(info) {
+                    projQuickPreviewLite(info.event.id)
+                }
+            });
+
+            calendar.render()
+
+            function reloadEvents() {
+                socket.emit('get-filmmaker-events', `<%- user.id %>`, callback => {
+                    var data = JSON.parse(callback)
+                    calendar.setOption('events', data.events)
+                    this.all_events = data.events
+                    for (var event of data.events) {
+                        if (event.class == 'event') {
+                            this.events.push(event)
+                        }
+                    }
+                    recountEvents()
+                })
+            }
+
+            function recountEvents() {
+                reformatCalendarDateTitle()
+                var calendarcurrentdate = $('.fc-toolbar-title span').eq(0).text()
+                var m = calendarcurrentdate.split(' ')[0]
+                $('#widget-month-events').text(m)
+                $('#widget-month-pre-events').text(m)
+
+                var month = calendarcurrentdate.split(' ')[0]
+                var year = parseInt(calendarcurrentdate.split(' ')[1])
+                var e = {
+                    events: 0,
+                    pre_events: 0,
+                    events_this_year: 0
+                }
+                var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                var this_month = new Date(calendarcurrentdate).getMonth()
+
+                for (var event of this.all_events) {
+                    var event_month = new Date(event.start).getMonth()
+                    var event_year = new Date(event.start).getFullYear()
+                    if (event.class == 'event' && event.status !== 'cancelled' && event.status !== 'tentative' && months[this_month] == months[event_month] && year == event_year) {
+                        e.events++
+                    } else if (event.class == 'pre-event' && event.status !== 'cancelled' && event.status !== 'tentative' && months[this_month] == months[event_month] && year == event_year) {
+                        e.pre_events++
+                    }
+
+                    if (event.class == 'event' && event.status !== 'tentative' && year == event_year) {
+                        e.events_this_year++
+                    }
+                }
+
+                $('#events-widget-event h3').text(e.events)
+                $('#events-widget-pre-event h3').text(e.pre_events)
+                $('#events-widget-total h3').text(e.events_this_year)
+                $('#year-events').text(year)
+            }
+        </script>
+        <%- include ('modals/err') %>
+</body>
+<style>
+
+</style>
+
+</html>

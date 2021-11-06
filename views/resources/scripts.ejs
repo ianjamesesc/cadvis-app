@@ -1,0 +1,51 @@
+<script src="vendors/jquery/js/jquery.min.js"></script>
+<!-- CoreUI and necessary plugins-->
+<script src="vendors/@coreui/coreui-pro/js/coreui.bundle.min.js"></script>
+<!--[if IE]><!-->
+<script src="js/socketio/socket.io.js"></script>
+<script src="vendors/@coreui/icons/js/svgxuse.min.js"></script>
+<script src="vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
+<script src="vendors/@coreui/utils/js/coreui-utils.js"></script>
+<script src="js/core-ui/main.js"></script>
+<script src="vendors/datatables.net/js/jquery.dataTables.js"></script>
+<script src="vendors/datatables.net/js/dataTables.responsive.min.js"></script>
+<script src="vendors/datatables.net/js/dataTables.colReorder.min.js"></script>
+<script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="js/hash/hash.generator.js"></script>
+<script src="js/jquery-dateformat.js"></script>
+<script src="js/clipboardjs/clipboard.min.js"></script>
+<script src="js/fixedColumns.min.js"></script>
+
+<script src="js/chartjs-plugin-labels.js"></script>
+
+
+
+<script>
+    var page = '<%- page %>'
+    var sessioned_user = (page == 'Login') ? null : JSON.parse(`<%- JSON.stringify( user) %>`)
+</script>
+
+<script src="js/views/main.js"></script>
+
+<% if (page.includes("Calendar") || page.includes("Supplier") || page.includes("Filmmaker")) { %>
+    <script src="js/views/calendar.js"></script>
+    <% } %>
+
+        <% if (!page.includes("Login")) { %>
+
+            <% if (page.includes("Dashboard")) { %>
+
+                <script src="js/views/charts.js"></script>
+
+                <% } %>
+
+                    <% } %>
+
+                        <% if (page.includes("Calendar") || page.includes("Supplier") || page.includes("Filmmaker")) { %>
+                            <!-- Plugins and scripts required Calendar-->
+                            <script src="vendors/fullcalendar/js/main.js"></script>
+                            <script src="js/core-ui/calendar.js"></script>
+                            <script src='js/full-calendar/main.js'></script>
+                            <% } %>
+
+                                <%- include ('../modals/err') %>

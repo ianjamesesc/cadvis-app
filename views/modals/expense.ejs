@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div class="modal fade" id="modal_expense" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Expense</h5>
+                <input type="text" id="_modal_id" hidden>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="inputAddress"><span class="_proj_event_type"></span> Date</label>
+                    <input type="date" class="form-control proj_event_date" id="_modal_date">
+                </div>
+
+                <div class="form-group">
+                    <label>Account</label>
+                    <select class="custom-select form-control proj_head" id="_modal_account">
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="custom-select form-control proj_drive_location" id="_modal_category">
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea type="text" autocomplete="off" type="text" class="form-control" id="_modal_notes" placeholder="Add Some Notes..." style="height: 100px; resize: none;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputAddress">Amount</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">₱</span>
+                        </div>
+                        <input type="text" class="form-control proj_event_date text-right" id="_modal_amount" value="0.00" onblur="toggleCurrencyFormat(this, true)" onfocus="toggleCurrencyFormat(this, false)" onclick="this.select()">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-id="" row-id="" class="btn btn-sm btn-danger proj_delete_btn mx-1" onclick="deleteExpense()" style="position: absolute; left: 10px;">
+                    <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-trash"></use>
+                      </svg>
+                </button>
+                <button type="button" class="btn btn-secondary proj_cancel_btn w-25" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary yes-btn w-25" href="#" onclick="createNewExpense()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .currency_sign {
+        position: absolute;
+        top: 54%;
+        left: 8%;
+    }
+</style>

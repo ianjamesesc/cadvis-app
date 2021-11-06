@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--
+* CoreUI Pro based Bootstrap Admin Template
+* @version v3.2.0
+* @link https://coreui.io/pro/
+* Copyright (c) 2020 creativeLabs Łukasz Holeczek
+* License (https://coreui.io/pro/license)
+-->
+<html lang="en">
+
+<head>
+    <%- include ('resources/head') %>
+        <title>Resources | Cadence Visual</title>
+        <link type="text/css" href="css/views/resources.css" rel="stylesheet">
+</head>
+
+<body class="c-app c-no-layout-transition <%- (user.dark_theme) ? 'c-dark-theme': '' %>">
+    <%- include ('layouts/sidebar.ejs') %>
+
+        <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
+            <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">
+        <svg class="c-icon">
+          <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-x"></use>
+        </svg>
+      </button>
+            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list"></use>
+            </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speech"></use>
+            </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+            </svg></a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="c-wrapper">
+            <%- include ('layouts/navbar.ejs') %>
+                <div class="c-body">
+                    <main class="c-main">
+                        <div class="container-fluid">
+                            <div class="fade-in">
+
+                                <div class="row">
+
+                                    <div class="col-12 col-md-6 col-lg-7 p-3">
+                                        <div class="card m-0 h-100">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="d-inline col-8">
+                                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">Cadence Visual Accounts</h6>
+                                                    </div>
+
+                                                    <div class="d-inline text-right col-4 w-100">
+                                                        <button class="btn btn-sm btn-primary" onclick="addResourcesAccountRow(this)">
+                                                <svg class="c-icon d-inline">
+                                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                                    </use>
+                                                </svg>
+                                                <span class="d-none d-lg-inline">Add Account</span>
+                                            </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body h-100">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered" id="cv-accounts-table">
+                                                        <thead class="table-header-color">
+                                                            <th style="text-align: center; cursor: pointer;">Account No.</th>
+                                                            <th style="text-align: center; cursor: pointer;">Account Name</th>
+                                                            <th style="text-align: center; cursor: pointer;" colspan="2">Type</th>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-5 p-3">
+                                        <div class="card m-0 h-100">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="d-inline col-8">
+                                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">Expense Categories</h6>
+                                                    </div>
+
+                                                    <div class="d-inline text-right col-4 w-100">
+                                                        <button class="btn btn-sm btn-primary" onclick="addResourcesCategoryRow(this)">
+                                                <svg class="c-icon d-inline">
+                                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                                    </use>
+                                                </svg>
+                                                <span class="d-none d-lg-inline">Add Category</span>
+                                            </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered" id="cv-categories-table">
+                                                        <thead class="table-header-color">
+                                                            <th style="text-align: center; cursor: pointer;">No.</th>
+                                                            <th style="text-align: center; cursor: pointer;" colspan="2">Category Name</th>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-12 p-3">
+                                        <div class="card m-0 h-100">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="d-inline col-8">
+                                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">File Storage Drives</h6>
+                                                    </div>
+
+                                                    <div class="d-inline text-right col-4 w-100">
+                                                        <button class="btn btn-sm btn-primary" onclick="addResourcesStorageRow(this)">
+                                                <svg class="c-icon d-inline">
+                                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                                    </use>
+                                                </svg>
+                                                <span class="d-none d-lg-inline">Add Storage</span>
+                                            </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body h-100">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered" id="cv-storage-table">
+                                                        <thead class="table-header-color">
+                                                            <th style="text-align: center; cursor: pointer;">No.</th>
+                                                            <th style="text-align: center; cursor: pointer;">Brand</th>
+                                                            <th style="text-align: center; cursor: pointer;">Capacity (GB)</th>
+                                                            <th style="text-align: center; cursor: pointer;">Type</th>
+                                                            <th style="text-align: center; cursor: pointer;" colspan="2">Date Added</th>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-12 p-3">
+                                        <div class="card m-0 h-100">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="d-inline col-8">
+                                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">Output Types</h6>
+                                                    </div>
+
+                                                    <div class="d-inline text-right col-4 w-100">
+                                                        <button class="btn btn-sm btn-primary" onclick="addResourcesOutputRow(this)">
+                                                <svg class="c-icon d-inline">
+                                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                                    </use>
+                                                </svg>
+                                                <span class="d-none d-lg-inline">Add Output</span>
+                                            </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body h-100">
+                                                <label><b>Note:</b> Always use 'E' for code and 'Event' for the description. This will be replaced with selected event type on display.</label>
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered" id="cv-outputs-table">
+                                                        <thead class="table-header-color">
+                                                            <th style="text-align: center; cursor: pointer;">No.</th>
+                                                            <th style="text-align: center; cursor: pointer;">Code</th>
+                                                            <th style="text-align: center; cursor: pointer;" colspan="2">Full Description</th>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12 p-3">
+                                        <div class="card m-0 h-100">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="d-inline col-8">
+                                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">Project Types</h6>
+                                                    </div>
+
+                                                    <div class="d-inline text-right col-4 w-100">
+                                                        <button class="btn btn-sm btn-primary" onclick="addResourcesProjectTypesRow(this)">
+                                                <svg class="c-icon d-inline">
+                                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                                    </use>
+                                                </svg>
+                                                <span class="d-none d-lg-inline">Add Type</span>
+                                            </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body h-100">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered" id="cv-project-types-table">
+                                                        <thead class="table-header-color">
+                                                            <th style="text-align: center; cursor: pointer;">No.</th>
+                                                            <th style="text-align: center; cursor: pointer;" colspan="2">Name</th>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12 p-3">
+                                        <div class="card m-0 h-100">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="d-inline col-8">
+                                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">Allocations</h6>
+                                                    </div>
+
+                                                    <div class="d-inline text-right col-4 w-100">
+                                                        <button class="btn btn-sm btn-primary" onclick="addNewAllocation()">
+                                                <svg class="c-icon d-inline">
+                                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                                    </use>
+                                                </svg>
+                                                <span class="d-none d-lg-inline">Add Allocation</span>
+                                            </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body h-100">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered" id="cv-allocations-table">
+                                                        <thead class="table-header-color">
+                                                            <th style="text-align: center; cursor: pointer;">No.</th>
+                                                            <th style="text-align: center; cursor: pointer;">Users</th>
+                                                            <th style="text-align: center; cursor: pointer;">Allocation</th>
+                                                            <th style="text-align: center; cursor: pointer;" colspan="2">Date Added</th>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </main>
+                </div>
+        </div>
+        <%- include ('resources/scripts') %>
+            <script type="text/javascript" src="js/views/resources.js"></script>
+            <%- include ('modals/projbudget') %>
+                <%- include ('modals/shoot-today') %>
+
+</body>
+<style>
+
+</style>
+
+</html>

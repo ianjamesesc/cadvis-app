@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+* CoreUI Pro based Bootstrap Admin Template
+* @version v3.2.0
+* @link https://coreui.io/pro/
+* Copyright (c) 2020 creativeLabs Łukasz Holeczek
+* License (https://coreui.io/pro/license)
+-->
+<html lang="en">
+
+<head>
+    <%- include ('resources/head') %>
+        <title>Budget | Cadence Visual</title>
+        <link type="text/css" href="css/views/budget.css" rel="stylesheet">
+</head>
+
+<body class="c-app c-no-layout-transition <%- (user.dark_theme) ? 'c-dark-theme': '' %>">
+    <%- include ('layouts/sidebar.ejs') %>
+
+        <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
+            <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">
+        <svg class="c-icon">
+          <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-x"></use>
+        </svg>
+      </button>
+            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list"></use>
+            </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speech"></use>
+            </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+            </svg></a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="c-wrapper">
+            <%- include ('layouts/navbar.ejs') %>
+                <div class="c-body">
+                    <main class="c-main">
+                        <div class="container-fluid">
+                            <div class="fade-in">
+
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card text-white bg-gradient-primary">
+                                            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg budget-widget-total">₱ <span class="amount">0</span></div>
+                                                    <div>Total of Packages</div>
+                                                </div>
+                                            </div>
+                                            <div class="c-chart-wrapper mt-3" style="height:70px;">
+                                                <canvas class="chart" id="card-chart1" height="70"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card text-white bg-gradient-success">
+                                            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg budget-widget-revenue">₱ <span class="amount">0</span></div>
+                                                    <div>Total Profit</div>
+                                                </div>
+                                            </div>
+                                            <div class="c-chart-wrapper mt-3" style="height:70px;">
+                                                <canvas class="chart" id="card-chart2" height="70"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="card text-white bg-gradient-danger">
+                                            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg budget-widget-expenses">₱ <span class="amount">0</span></div>
+                                                    <div>Total Expense</div>
+                                                </div>
+                                            </div>
+                                            <div class="c-chart-wrapper mt-3" style="height:70px;">
+                                                <canvas class="chart" id="card-chart3" height="70"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider mt-1 mb-4"></div>
+                                <div class="row shoot-today-row">
+
+                                </div>
+
+                                <div class="card col-12 w-100 supplier-input">
+                                    <div class="card-body">
+                                        <div class="col-12 text-center mb-4 mt-3">
+                                            <h4>Select Date Range</h4>
+                                        </div>
+                                        <div class="form-row col-12" id="date-range">
+                                            <div class="form-group col-md-3 col-sm-12"></div>
+                                            <div class="form-group col-md-3 col-sm-12">
+                                                <label>Start</label>
+                                                <input type="date" class="form-control start">
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group col-md-3 col-sm-12">
+                                                <label>End</label>
+                                                <input type="date" class="form-control end">
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group col-md-3 col-sm-12"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="profit-cards-container" class="row">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </main>
+                </div>
+        </div>
+        <%- include ('resources/scripts') %>
+            <script type="text/javascript" src="js/views/budget.js"></script>
+            <%- include ('modals/projdetails') %>
+                <%- include ('modals/confirm') %>
+                    <%- include ('modals/shoot-today') %>
+
+</body>
+<style>
+
+</style>
+
+</html>

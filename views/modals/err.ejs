@@ -1,0 +1,198 @@
+<!-- Modal -->
+<div class="modal fade" id="_modal_err_conn" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Connection Error</h5>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div class="modal-body text-center">
+                You have been disconnected from the server. Trying to reconnect.
+            </div>
+            <div class="modal-footer" style="border-top: none!important">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="_modal_page_loading" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-1 ml-2">Loading Page Contents<span class="loading-dots"></span></h5>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="_modal_add_personal_schedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Personal Schedule</h5>
+                <p class="modal-id d-none"></p>
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-row">
+                    <div class="form-group col-12 text-left">
+                        <label>Title</label>
+                        <input list="coordinators" autocomplete="off" type="text" class="form-control" id="title" value="">
+                    </div>
+
+                    <div class="form-group col-12 text-left">
+                        <label>Type</label>
+                        <select class="custom-select form-control" id="type">
+                            <option value="errand">Errand</option>
+                            <option value="event">Event</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-12 text-left">
+                        <label>Frequency</label>
+                        <select class="custom-select form-control" id="recur">
+                            <option value="once">Once</option>
+                            <option value="dyly">Daily</option>
+                            <option value="wkly">Weekly</option>
+                            <option value="mtly">Monthly</option>
+                            <option value="yrly">Yearly</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-12 text-left">
+                        <label>Start Date</label>
+                        <input type="date" class="form-control" id="date_start" placeholder="Start">
+                    </div>
+
+                    <div class="form-group col-12 text-left">
+                        <label>End Date</label>
+                        <input type="date" class="form-control" id="date_end" placeholder="End">
+                    </div>
+
+                    <div class="form-group col-12 pb-3 text-left">
+                        <label>Description</label>
+                        <textarea type="text" autocomplete="off" type="text" id="description" class="form-control h-100 w-100 mb-0"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-id="" row-id="" class="btn btn-sm btn-danger mx-1" style="position: absolute; left: 12px">
+                    <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-trash"></use>
+                      </svg>
+                </button>
+                <button class="btn btn-secondary" style="min-width: 100px;" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" style="min-width: 100px;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="_modal_calendar_action" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Choose Action</h5>
+                <p class="modal-id d-none"></p>
+            </div>
+            <div class="modal-body text-center">
+                <button class="btn btn-primary d-block my-2 w-100 text-center add-proj">Add Project</button>
+                <button class="btn btn-primary d-block my-2 w-100 text-center add-sched">Add Personal Errand/Event</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="_modal_proj_quickview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="display: table-cell; vertical-align: middle;">Project Preview</h5>
+                <div class="text-right py-1 view-only">
+                    <p class="text-muted m-0 d-block" id="project-date-created"></p>
+                    <small class="text-muted d-block" style="margin-top: -3px;">Date Added</small>
+                </div>
+            </div>
+            <div class="modal-body text-left">
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" style="min-width: 100px;" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_allocation_view" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="display: table-cell; vertical-align: middle;">Project Preview</h5>
+                <p class="modal-id d-none"></p>
+            </div>
+            <div class="modal-body text-left">
+
+                <div class="row">
+                    <div class="col-12 py-0 px-3 mb-3 actions-section">
+                        <div class="card bg-transparent mb-3 h-100">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="d-inline col-10">
+                                        <h6 style="position: absolute; top: 50%; transform: translate(0%, -50%);">Percentage Allocation&nbsp;[ <span class="percentage-remaining"></span>% ]</h6>
+                                    </div>
+
+                                    <div class="d-inline text-right col-2 w-100">
+                                        <button class="btn btn-sm btn-primary budget-add-btn" onclick="addAllocationModalRow()">
+                                    <svg class="c-icon d-inline">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                        </use>
+                                    </svg>
+                                </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body text-right pt-3 px-3 pb-0">
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6 col-12">
+                        <label for="inputAddress">Date Created</label>
+                        <input type="date" class="form-control" id="created" readonly>
+                    </div>
+                    <div class="form-group col-md-6 col-12">
+                        <label>Visible</label>
+                        <select class="custom-select form-control" id="visibility">
+                            <option value="t">True</option>
+                            <option value="f">False</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" style="min-width: 100px;" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" style="min-width: 100px;">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .currency_sign {
+        position: absolute;
+        top: 54%;
+        left: 8%;
+    }
+</style>

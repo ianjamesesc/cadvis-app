@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<!--
+* CoreUI Pro based Bootstrap Admin Template
+* @version v3.2.0
+* @link https://coreui.io/pro/
+* Copyright (c) 2020 creativeLabs Łukasz Holeczek
+* License (https://coreui.io/pro/license)
+-->
+<html lang="en">
+
+<head>
+    <%- include ('resources/head') %>
+        <title>Dashboard | Cadence Visual</title>
+</head>
+
+<body class="c-app c-no-layout-transition <%- (user.dark_theme) ? 'c-dark-theme': '' %>">
+    <%- include ('layouts/sidebar') %>
+
+        <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
+            <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">
+        <svg class="c-icon">
+          <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-x"></use>
+        </svg>
+      </button>
+            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list"></use>
+            </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speech"></use>
+            </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+                        <svg class="c-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+            </svg></a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="c-wrapper">
+            <%- include ('layouts/navbar') %>
+                <div class="c-body">
+                    <main class="c-main">
+                        <div class="container-fluid">
+                            <div class="fade-in">
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-2 mb-4">
+                                        <div class="card text-white bg-gradient-success h-100">
+                                            <div class="card-body card-body pb-3 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg budget-widget-revenue">₱ <span class="amount">0</span></div>
+                                                    <div class="font-weight-bold">Total Profit</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /.col-->
+
+                                    <div class="col-sm-6 col-lg-2 mb-4">
+                                        <div class="card text-white bg-gradient-danger h-100">
+                                            <div class="card-body card-body pb-3 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg budget-widget-expenses">₱ <span class="amount">0</span></div>
+                                                    <div class="font-weight-bold">Total Project Expenses</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /.col-->
+
+                                    <div class="col-sm-6 col-lg-2 mb-4">
+                                        <div class="card text-white bg-gradient-primary h-100">
+                                            <div class="card-body card-body pb-3 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg cv-widget-remaining">₱ <span class="amount">0</span></div>
+                                                    <div class="font-weight-bold">Remaining Funds</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /.col-->
+
+                                    <div class="col-sm-6 col-lg-2 mb-4">
+                                        <div class="card text-white bg-gradient-info h-100">
+                                            <div class="card-body card-body pb-3 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg average-package">₱ <span class="amount">0</span></div>
+                                                    <div class="font-weight-bold">Average Package</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /.col-->
+
+                                    <div class="col-sm-6 col-lg-2 mb-4">
+                                        <div class="card text-white bg-gradient-secondary h-100">
+                                            <div class="card-body card-body pb-3 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg total-number-of-projects text-dark"></div>
+                                                    <div class="font-weight-bold text-dark">
+                                                        <%- new Date().getFullYear() %> Events
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /.col-->
+
+                                    <div class="col-sm-6 col-lg-2 mb-4">
+                                        <div class="card text-white bg-gradient-warning h-100">
+                                            <div class="card-body card-body pb-3 d-flex justify-content-between align-items-start">
+                                                <div>
+                                                    <div class="text-value-lg total-number-of-projects-from-years"><span class="number"></span></div>
+                                                    <div class="font-weight-bold total-number-of-projects-from-years-title">Year<span></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /.col-->
+                                </div>
+                                <!-- /.row-->
+
+                                <div class="row shoot-today-row">
+
+                                </div>
+                                <!-- /.row-->
+
+                                <div class="row">
+                                    <div class="col-12" id="dashboard-main-progress">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0 px-2 cv-main-chart-title"></h4>
+                                                        <div class="small text-muted px-2">Note: Dates after today are forcasted data only.</div>
+                                                    </div>
+                                                    <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
+                                                        <div class="btn-group btn-group-toggle mx-3" data-toggle="buttons">
+                                                            <label class="btn btn-outline-secondary active">
+                          <input id="cv-main-chart-option-1" class="cv-main-chart-option" data="month" type="radio" name="options" autocomplete="off" checked=""> Month
+                        </label>
+                                                            <label class="btn btn-outline-secondary">
+                          <input id="cv-main-chart-option-2" class="cv-main-chart-option" data="year" type="radio" name="options" autocomplete="off"> Year
+                        </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-chart-wrapper mb-5 mb-lg-3" style="height:300px;">
+                                                    <canvas class="chart mt-4" id="cv-main-chart" height="300"></canvas>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="card text-white bg-gradient-info text-center mb-md-0 mb-3">
+                                                            <div class="card-body">
+                                                                <table class="p-0 m-0 w-100">
+                                                                    <tr>
+                                                                        <td class="text-left p-0">
+                                                                            <h5 class="m-0">Average Profit</h5>
+                                                                        </td>
+                                                                        <td class="text-right p-0">
+                                                                            <h5 class="m-0">₱&nbsp;<span class="cv_average_revenue"></span></h5>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="card text-white bg-gradient-danger text-center mb-md-0 mb-0">
+                                                            <div class="card-body">
+                                                                <table class="p-0 m-0 w-100">
+                                                                    <tr>
+                                                                        <td class="text-left p-0">
+                                                                            <h5 class="m-0">Average Expense</h5>
+                                                                        </td>
+                                                                        <td class="text-right p-0">
+                                                                            <h5 class="m-0">₱&nbsp;<span class="cv_average_expense"></span></h5>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-->
+
+                                    <div class="d-none" id="dashboard-tasklist">
+                                        <div class="card h-100 mb-0" style="max-height: 482px!important;">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between mb-3">
+                                                    <div>
+                                                        <h4 class="card-title mb-1">Tasks</h4>
+                                                        <div class="small text-muted">Projects assigned for you to manage.</div>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-primary my-1" onclick="toggleProjectModal(0)" style="height: 30.13px!important;">
+                                                        <svg class="c-icon d-inline">
+                                                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus">
+                                                            </use>
+                                                        </svg>
+                                                        <span class="d-none d-lg-inline p-0"
+                                                            style="margin-bottom: -15px">Add New Project</span>
+                                                    </button>
+                                                </div>
+                                                <table class="table table-striped table-bordered w-100" id="tasklist">
+                                                    <thead class="text-center table-header-color">
+                                                        <tr role="row">
+                                                            <th>No.</th>
+                                                            <th>Name</th>
+                                                            <th>Task</th>
+                                                            <th>Deadline</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-->
+
+                                </div>
+                                <!-- /.row-->
+
+                                <div class="row">
+                                    <!-- /.card-->
+                                    <div class="col-lg-6 col-md-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0">Package Offerings
+                                                            <%- `(${new Date().getFullYear()})` %>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="c-chart-wrapper mb-2 mb-lg-0 p-0" style="height:400px;">
+                                                    <canvas class="chart mt-4" id="cv-average-package-chart" height="400"></canvas>
+                                                </div>
+                                                <div class="card text-white bg-gradient-primary mb-0 mt-3 p-3 text-center">
+                                                    <table class="p-0 m-0">
+                                                        <tr>
+                                                            <td class="text-left p-0">
+                                                                <h5 class="m-0">Total of Packages</h5>
+                                                            </td>
+                                                            <td class="text-right p-0">
+                                                                <h5 class="m-0"><span class="cv_packages_total"></span></h5>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-->
+                                    <div class="col-lg-3 col-md-6 col-sm-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-1">Cadence Visual Expenses&nbsp;&nbsp;<span class="reset-date-btn" style="cursor: pointer;" onclick="updateExpenseChart()"><svg class="c-icon mb-1">
+                                                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-reload"></use>
+                                                          </svg></span></h4>
+                                                        <div class="small text-muted">Hover to see category and amount.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-chart-wrapper mb-2 mb-lg-0 p-0" style="height:400px;">
+                                                    <canvas class="chart mt-4" id="cv-expenses-chart" height="400"></canvas>
+                                                </div>
+                                                <div class="card text-white bg-gradient-danger mb-0 p-3 text-center">
+                                                    <table class="p-0 m-0">
+                                                        <tr>
+                                                            <td class="text-left p-0">
+                                                                <h5 class="m-0">Total Expenses</h5>
+                                                            </td>
+                                                            <td class="text-right p-0">
+                                                                <h5 class="m-0"><span class="cv_expenses_total"></span></h5>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-->
+                                    <div class="col-lg-3 col-md-6 col-sm-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0">Breakdown of Bookings
+                                                            <%- `(${new Date().getFullYear()})` %>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="c-chart-wrapper mb-3" style="height:400px;">
+                                                    <canvas class="chart mt-4" id="cv-bookings-tally-chart" height="400"></canvas>
+                                                </div>
+                                                <div class="card text-white bg-gradient-primary mb-0 p-3 text-center">
+                                                    <h5 class="m-0"><span class="booking_tally_total"></span></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-->
+                                </div>
+                                <!-- /.row-->
+
+                                <!-- .row-->
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0">
+                                                            Cadence Visual Profit
+                                                            <%- `(${new Date().getFullYear()})` %>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+
+                                                <div class="table-responsive pt-3">
+                                                    <table class="table table-sm table-bordered" id="cv-monthly-profit-figures">
+                                                        <thead class="text-center table-header-color">
+                                                            <tr>
+                                                                <th style="max-width: 50px;">Qty</th>
+                                                                <th>Month</th>
+                                                                <th style="max-width: 150px;">Profit</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <div class="card text-white bg-gradient-primary text-center mb-0">
+                                                    <div class="card-body">
+                                                        <table class="p-0 m-0 w-100">
+                                                            <tr>
+                                                                <td class="text-left p-0">
+                                                                    <h5 class="m-0">Total</h5>
+                                                                </td>
+                                                                <td class="text-right p-0">
+                                                                    <h5 class="m-0">₱&nbsp;<span class="cv_profit_total"></span></h5>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0">
+                                                            Your Monthly Profit
+                                                            <%- `(${new Date().getFullYear()})` %>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+
+                                                <div class="table-responsive pt-3">
+                                                    <table class="table table-sm table-bordered" id="monthly-profit-figures">
+                                                        <thead class="text-center table-header-color">
+                                                            <tr>
+                                                                <th style="max-width: 50px;">Qty</th>
+                                                                <th>Month</th>
+                                                                <th style="max-width: 150px;">Profit</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <div class="card text-white bg-gradient-primary text-center mb-0">
+                                                    <div class="card-body">
+                                                        <table class="p-0 m-0 w-100">
+                                                            <tr>
+                                                                <td class="text-left p-0">
+                                                                    <h5 class="m-0">Total</h5>
+                                                                </td>
+                                                                <td class="text-right p-0">
+                                                                    <h5 class="m-0">₱&nbsp;<span class="personal_profit_total"></span></h5>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0">
+                                                            Your Graphed Monthly Profit
+                                                            <%- `(${new Date().getFullYear()})` %>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="c-chart-wrapper mb-3" style="height:405px;">
+                                                    <canvas class="chart mt-4" id="personal-profit-chart" height="405"></canvas>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="card text-white bg-gradient-primary text-center mb-0 mb-lg-0">
+                                                            <div class="card-body">
+                                                                <table class="p-0 m-0 w-100">
+                                                                    <tr>
+                                                                        <td class="text-left p-0">
+                                                                            <h5 class="m-0">Monthly Average</h5>
+                                                                        </td>
+                                                                        <td class="text-right p-0">
+                                                                            <h5 class="m-0">₱&nbsp;<span class="personal_profit_average_monthly"></span></h5>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="card text-white bg-gradient-primary text-center mb-0 mb-lg-0">
+                                                            <div class="card-body">
+                                                                <table class="p-0 m-0 w-100">
+                                                                    <tr>
+                                                                        <td class="text-left p-0">
+                                                                            <h5 class="m-0">Average Profit</h5>
+                                                                        </td>
+                                                                        <td class="text-right p-0">
+                                                                            <h5 class="m-0">₱&nbsp;<span class="personal_profit_average"></span></h5>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-->
+
+
+
+                                </div>
+                                <!-- /.row-->
+
+                                <div class="row">
+                                    <div class="col-lg-8 col-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0">Coordinators Tally
+                                                            <%- `(${new Date().getFullYear()})` %>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="c-chart-wrapper mb-3" style="height:400px;">
+                                                    <canvas class="chart mt-4" id="coordinators-tally-chart" height="400"></canvas>
+                                                </div>
+
+                                                <div class="card text-white bg-gradient-primary mb-0 p-3 text-center">
+                                                    <table class="p-0 m-0">
+                                                        <tr>
+                                                            <td class="text-left p-0">
+                                                                <h5 class="m-0">Top Coordinator</h5>
+                                                            </td>
+                                                            <td class="text-right p-0">
+                                                                <h5 class="m-0"><span class="top_1_coordinator"></span></h5>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0">Project Managers Tally</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="c-chart-wrapper mb-3" style="height:400px;">
+                                                    <canvas class="chart mt-4 w-100" id="project-heads-tally-chart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-->
+                                </div>
+                                <!-- /.row-->
+
+                                <div class="row">
+                                    <div class="col-12 pb-4">
+                                        <div class="card h-100">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <h4 class="card-title mb-0">Event Locations
+                                                            <%- `(${new Date().getFullYear()})` %>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <div class="c-chart-wrapper mb-3" style="height:400px;">
+                                                    <canvas class="chart mt-4" id="event-locations-chart" height="400"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row-->
+
+                            </div>
+                        </div>
+                    </main>
+                </div>
+        </div>
+        <%- include ('resources/scripts') %>
+            <script type="text/javascript" src="js/views/budget.js"></script>
+            <%- include ('modals/projdetails') %>
+                <%- include ('modals/confirm') %>
+                    <%- include ('modals/shoot-today') %>
+</body>
+
+</html>
